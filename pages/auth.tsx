@@ -1,9 +1,15 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
-import { signIn } from 'next-auth/react';
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
-export default function Auth() {
+export default function Auth({ fallbackData }) {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+    if (status === "authenticated") {
+      return router.push('/welcome');
+    }
   return (
     <div className={styles.container}>
       <Head>
