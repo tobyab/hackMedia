@@ -14,3 +14,8 @@ model message {
   created_at DateTime @default(now()) 
   created_by String @db.VarChar(256)
 }
+
+model like {
+  id         BigInt @id @default(autoincrement())
+  created_at DateTime @default(now())
+}

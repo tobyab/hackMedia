@@ -20,7 +20,7 @@ export default function Auth({ fallbackData }) {
         <h1 className={styles.title}>
           Welcome to HackMedia!
         </h1>
-        <h2>The name will probably change...</h2>
+        <h2>Sign in below!</h2>
         <Link href="/api/auth/signin" passHref>
           <button
           onClick={(e) => {
