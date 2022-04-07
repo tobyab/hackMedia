@@ -1,10 +1,8 @@
 import prisma from '../../utils/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
-var Filter = require('bad-words'),
-    filter = new Filter();
 
-export default async function handler(
+export default async function handler (
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -29,14 +27,14 @@ export default async function handler(
   const { email, name } = session.user;
 
   if (!session) {
-    return res.status(403).send("You're not allowed to do this. Try again!");
+    return res.status(403).send("You're not allowed to do this. Lmao");
   }
 
   if (req.method === 'POST') {
     const newMessage = await prisma.message.create({
       data: {
         email,
-        body: filter.clean(req.body.body || '').slice(0, 500),
+        body: (req.body.body || '').slice(0, 500),
         created_by: name,
       }
     });
@@ -49,5 +47,5 @@ export default async function handler(
     });
   }
 
-  return res.send("'Erm, you're not allowed to do that.' -Toby Wednesday 6 April 2022 at 18:32pm GMT");
+  return res.send("'Erm, you're not allowed to do that.' -Toby; Wednesday 6 April 2022 at 18:32pm GMT");
 }

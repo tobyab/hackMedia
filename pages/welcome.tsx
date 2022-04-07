@@ -23,9 +23,8 @@ export default function Home() {
       <h2>Hack Media is a social media <b>just</b> for hackclubbers
       where you can share your projects, chat and have fun with other hackclubbers!
       </h2>
-      <h3>Ready to get going? <a onClick={() => {
-          router.push('/auth');
-          }}>Click here to get started</a>!
+      <h3>Ready to get going? <Link href="/">
+          Click here to get started</Link>!
       </h3>
     </div>
   )
